@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>home</title>
+</head>
+<body>
+
+<div>
+    <ul>
+        <li class="info"><a class = "home"   href="{% url 'home' %}">Home</a></li>
+        <li class="info"><a class = "prof"   href="profile.html">Profile</a></li>
+        <li class="info"><a class = "post"   href="{% url 'posting' %}">Posts</a></li>
+        <li class="account"><a class="reg"      href="./register.html">Register</a></li>
+        <li class="account"><a class="log"      href="./login.html">Login</a></li>
+        <li class="info"><a class="about"  href="{% url 'about us' %}"> About Us</a></li>
+        <li class="info"><a class="about"  href="{% url 'post-make' %}">Post Make</a></li>
+    </ul>
+
+</div>
+<div>
+    <h1 class="title">RedNot</h1>
+    <h1 class="percent">5%</h1>
+</div>
+<div class="user-register">
+<section class="user-reg">
+
+<form class="register-form" action="{% url "register" %}" method="post">
+    {{ form }}
+    {% csrf_token %}
+    <button type="submit" class="">Register</button>
+
+
+</form>
+</section>
+</div>
+</body>
+</html>
