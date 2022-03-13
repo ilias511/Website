@@ -1,12 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.]
-from website.sites.models import User, Post
+from website.sites.models import  Post
 
 
-@admin.register(User)
-class TestAdmin(admin.ModelAdmin):
-    pass
+
 
 @admin.register(Post)
 class TestAdmin2(admin.ModelAdmin):

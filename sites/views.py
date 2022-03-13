@@ -8,30 +8,8 @@ from django.urls import reverse_lazy
 from django.views import generic as view
 
 from website.settings import LOGIN_REDIRECT_URL
+from website.sites.forms import UserRegistrationForm, PostsForm
 from website.sites.models import Post
-
-UserModel = get_user_model()
-
-
-class PostsForm(ModelForm):
-    class Meta:
-        model = Post
-        fields = ['title', 'details', 'category']
-
-
-class UserRegistrationForm(forms.UserCreationForm):
-    class Meta:
-        model = UserModel
-        fields = ('username', 'first_name')
-
-    def __init__(self, *args, **kwargs):
-        super(UserRegistrationForm, self).__init__(*args, **kwargs)
-
-        for field_name in ['username', 'password1', 'password2']:
-            self.fields[field_name].help_text = None
-
-    def save(self, commit=True):
-        return super().save(commit=commit)
 
 
 class UserRegistrationView(view.CreateView):
@@ -39,8 +17,8 @@ class UserRegistrationView(view.CreateView):
     template_name = 'register.html'
     success_url = reverse_lazy('home')
 
-    def form_valid(self, *args, **kwargs):
-        result = super().form_valid(*args, **kwargs)
+    def form_valid(self, form):
+        result = super().form_valid(form)
 
         login(self.request, self.object)
         return result
@@ -57,7 +35,7 @@ class UserLoginView(views.LoginView):
 
 
 class LogoutView(views.LogoutView):
-    pass
+    next_page = 'home'
 
 
 def home(request):
