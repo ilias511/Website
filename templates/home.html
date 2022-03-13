@@ -14,7 +14,10 @@
         <li class="info"><a class="post" href="{% url 'posting' %}">Posts</a></li>
         <li class="info"><a class="about" href="{% url 'about us' %}"> About Us</a></li>
         <li class="info"><a class="about" href="{% url 'post-make' %}">Post Make</a></li>
+        {% if user.is_authenticated %}
+
         <li class="account"><a class="log-out" href="{% url 'logout' %}"> Logout</a></li>
+        {% endif %}
         <li class="account"><a class="reg" href="{% url 'register' %}">Register</a></li>
         <li class="account"><a class="log" href="{% url 'log in' %}">Login</a></li>
 
@@ -39,7 +42,10 @@
     </form>
 </div>
 <h1>
-    {{ request.user }}
+{% if user.is_authenticated %}
+        {{ user.appusername.username }}
+{% endif %}
 </h1>
+
 </body>
 </html>

@@ -469,6 +469,16 @@ input[type=submit]:hover {
 .register-form{
     size: initial;
 }
+input[type=email]{
+     width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
 input[type=password]{
      width: 100%;
     padding: 12px 20px;
