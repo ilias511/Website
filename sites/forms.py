@@ -27,7 +27,11 @@ class UserRegistrationForm(UserCreationForm):
 
     def save(self, commit=True):
         user = super().save(commit=commit)
-        profile = AppUsername(username=self.cleaned_data['username'],age=self.cleaned_data['age'],user=user)
+        profile = AppUsername(
+            username=self.cleaned_data['username'],
+            age=self.cleaned_data['age'],
+            user=user
+        )
         if commit:
             profile.save()
         return user

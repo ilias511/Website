@@ -19,7 +19,6 @@ class UserRegistrationView(view.CreateView):
 
     def form_valid(self, form):
         result = super().form_valid(form)
-
         login(self.request, self.object)
         return result
 
@@ -29,6 +28,7 @@ class UserLoginView(views.LoginView):
 
     def get_success_url(self):
         next = self.request.GET.get('next', None)
+
         if next:
             return next
         return reverse_lazy('home')
