@@ -16,6 +16,7 @@ class UserRegistrationForm(UserCreationForm):
         model = UserModel
         fields = ('email',)
 
+    # just to hide validation messages
     def __init__(self, *args, **kwargs):
         super(UserRegistrationForm, self).__init__(*args, **kwargs)
 
@@ -38,6 +39,17 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class PostsForm(ModelForm):
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
+    def save(self, commit=True):
+        post = super().save(commit=False)
+        post.user = self.user
+        if commit:
+            post.save()
+        return post
+
     class Meta:
         model = Post
-        fields = ['title', 'details', 'category']
+        fields = ('title', 'details', 'category')

@@ -115,13 +115,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-AUTH_USER_MODEL = 'sites.AppUser'
 
 STATICFILES_DIRS = (BASE_DIR, 'templates/static')
 LOGIN_REDIRECT_URL = 'website/templates/login.html'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+AUTH_USER_MODEL = 'sites.AppUser'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

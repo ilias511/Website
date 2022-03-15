@@ -8,9 +8,6 @@ class AppUsersManager(base_user.BaseUserManager):
         if not email:
             raise ValueError("The given email must be set")
         email = self.normalize_email(email)
-        # Lookup the real model class from the global app registry so this
-        # manager method can be used in migrations. This is fine because
-        # managers are by definition working on the real model.
 
         user = self.model(email=email, **extra_fields)
         user.password = make_password(password)
