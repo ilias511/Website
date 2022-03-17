@@ -41,13 +41,13 @@ class LogoutView(views.LogoutView):
 def home(request):
     context = {'post': Post.objects.all()}
 
-    return render(request, 'home.html',context)
+    return render(request, 'home.html', context)
 
 
-def post(request):
+def posts(request):
     user_posts = Post.objects.filter(user=request.user)
     context = {'post': user_posts}
-    return render(request, 'posts.html',context)
+    return render(request, 'posts.html', context)
 
 
 class MakePost(view.CreateView):
@@ -55,25 +55,15 @@ class MakePost(view.CreateView):
     form_class = PostsForm
     success_url = reverse_lazy('home')
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['user'] = self.request.user
-        return kwargs
+    # def get_form_kwargs(self):
+    #     kwargs = super().get_form_kwargs()
+    #     kwargs['user'] = self.request.user
+    #     return kwargs
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
-# def make_post(request):
-#     if request.method == 'POST':
-#         meth = PostsForm(request.POST)
-#         if meth.is_valid():
-#             meth.save()
-#             return redirect('home')
-#     else:
-#         meth = PostsForm
-#     context = {
-#         'form': meth
-#     }
-#     return render(request, 'make-post.html', context)
-
-
-def about_us(request):
-    return render(request, 'about_us.html')
+class AboutUs(view.TemplateView):
+    template_name = 'about_us.html'

@@ -23,9 +23,6 @@ class UserRegistrationForm(UserCreationForm):
         for field_name in ['email', 'password1', 'password2', 'username']:
             self.fields[field_name].help_text = None
 
-    def clean_first_name(self):
-        return self.cleaned_data['username', 'age']
-
     def save(self, commit=True):
         user = super().save(commit=commit)
         profile = AppUsername(
@@ -39,16 +36,16 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class PostsForm(ModelForm):
-    def __init__(self, user, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.user = user
-
-    def save(self, commit=True):
-        post = super().save(commit=False)
-        post.user = self.user
-        if commit:
-            post.save()
-        return post
+    # def __init__(self, user, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.user = user
+    #
+    # def save(self, commit=True):
+    #     post = super().save(commit=False)
+    #     post.user = self.user
+    #     if commit:
+    #         post.save()
+    #     return post
 
     class Meta:
         model = Post
