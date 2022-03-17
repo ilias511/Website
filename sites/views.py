@@ -1,6 +1,7 @@
 from django import views
 from django.contrib.auth import get_user_model, forms, views, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.forms import ModelForm
@@ -44,21 +45,34 @@ def home(request):
     return render(request, 'home.html', context)
 
 
-def posts(request):
-    user_posts = Post.objects.filter(user=request.user)
-    context = {'post': user_posts}
-    return render(request, 'posts.html', context)
+class Posts(LoginRequiredMixin,view.ListView):
+    login_url = '/login'
+    template_name = 'posts.html'
+
+    def get_queryset(self):
+        self.model = Post
+        return super().get_queryset()
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['users_post'] = Post.objects.filter(user=self.request.user)
+        return data
 
 
-class MakePost(view.CreateView):
+#
+# def posts(request):
+#     if request.user:
+#         return redirect('log in')
+#     user_posts = Post.objects.filter(user=request.user)
+#     context = {'post': user_posts}
+#     return render(request, 'posts.html', context)
+
+
+class MakePost(LoginRequiredMixin, view.CreateView):
+    login_url = '/login'
     template_name = 'make-post.html'
     form_class = PostsForm
     success_url = reverse_lazy('home')
-
-    # def get_form_kwargs(self):
-    #     kwargs = super().get_form_kwargs()
-    #     kwargs['user'] = self.request.user
-    #     return kwargs
 
     def form_valid(self, form):
         form.instance.user = self.request.user
