@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+{% block base %}
+<div>
+    <h1 class="title">RedNot</h1>
+    <h1 class="percent">5%</h1>
+</div>
+<body>
+<fieldset class="user-post">
+    <form method="post" action="{% url "post-make" %}">
+        {{ form }}
+        {% csrf_token %}
+        <input class="button-post" type="submit" value="Submit">
+    </form>
+</fieldset>
+
+</body>
+{% endblock %}

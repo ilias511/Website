@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>home</title>
+</head>
+{#<h1>{{ request.user }}</h1>#}
+
+<div class="toggle-nav-sidebar">
+    <ul>
+        <li class="info"><a class="home" href="{% url 'home' %}">Home</a></li>
+        <li class="info"><a class="prof" href="">Profile</a></li>
+        <li class="info"><a class="post" href="{% url 'posting' %}">Posts</a></li>
+        <li class="info"><a class="about" href="{% url 'about us' %}"> About Us</a></li>
+        <li class="info"><a class="about" href="{% url 'post-make' %}">Post Make</a></li>
+        {% if user.is_authenticated %}
+
+        <li class="account"><a class="log-out" href="{% url 'logout' %}"> Logout</a></li>
+        {% endif %}
+        <li class="account"><a class="reg" href="{% url 'register' %}">Register</a></li>
+        <li class="account"><a class="log" href="{% url 'log in' %}">Login</a></li>
+
+
+    </ul>
+
+</div>
+
+</html>
+
+{% block base %}
+{% endblock %}

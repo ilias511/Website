@@ -48,16 +48,12 @@ def home(request):
 class Posts(LoginRequiredMixin,view.ListView):
     login_url = '/login'
     template_name = 'posts.html'
-
-    def get_queryset(self):
-        self.model = Post
-        return super().get_queryset()
+    model = Post
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         data['users_post'] = Post.objects.filter(user=self.request.user)
         return data
-
 
 #
 # def posts(request):

@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+{% block base %}
+    <body>
+    <div>
+        <h1 class="title">RedNot</h1>
+        <h1 class="percent">5%</h1>
+    </div>
+
+    {% for p in users_post %}
+        <h1>
+        {{ p.details}}
+            <br>
+            {{ p.details }}
+{#        {{ p.category }}#}
+        </h1>
+    {% endfor %}
+    </body>
+{% endblock %}
