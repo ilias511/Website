@@ -1,40 +1,49 @@
 {% extends 'base/base.html' %}
 {% block base %}
-<div>
-    <h1 class="title">RedNot</h1>
-    <h1 class="percent">5%</h1>
-</div>
-<body>
-<div class="wrapper">
-    <form action="{% url "post-make" %}" method="get">
-        <button class="redirect_button">
-            Make a Post+
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </form>
-</div>
-<h1>
-{% if user.is_authenticated %}
-        {{ user.appusername.username }}
-{% endif %}
-</h1>
-{% for post in post %}
-    <H3>{{ post.title }}</H3>
-    <H3>{{ post.details }}</H3>
-    <H3>{{ post.category }}</H3>
-{% endfor %}
-{% for users_post in post %}
-<aside class="all-posts">
-    <div class="post-title">
-    Title: {{ users_post.title }}
+    <div>
+        <h1 class="title">RedNot</h1>
+        <h1 class="percent">5%</h1>
+    </div>
+    <body>
+    <div class="wrapper">
+        {#        <div class="sidebar">#}
+        {#            {% if user.is_authenticated %}#}
+        {#                <h1>Hello {{ user.appusername.username }}!</h1>#}
+        {#            {% endif %}#}
+        {##}
+        {#            {% for post in post %}#}
+        {#                <div class="sidebar-post">#}
+        {#                    <b>{{ post.title }}</b>#}
+        {#                    <p>{{ post.details }}</p>#}
+        {#                    <p>{{ post.category }}</p>#}
+        {#                </div>#}
+        {#            {% endfor %}#}
+        {#        </div>#}
 
+        <div class="main-content">
+                <div class="button-form">
+                <form action="{% url "post-make" %}" method="get">
+                    <button class="redirect_button">
+                        Make a Post+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </form>
+                </div>
+
+            <div class="all-posts">
+                {% for users_post in post %}
+                    <div class="main-post">
+                        <h1 class="post-title">{{ users_post.title }}</h1>
+                        <p class="post-description">{{ users_post.details }}</p>
+                        <p class="post-category"> Category: {{ users_post.category }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 
-</aside>
-{% endfor %}
-
-</body>
+    </body>
 {% endblock %}

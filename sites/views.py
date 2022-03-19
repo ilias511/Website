@@ -45,7 +45,7 @@ def home(request):
     return render(request, 'home.html', context)
 
 
-class Posts(LoginRequiredMixin,view.ListView):
+class Posts(LoginRequiredMixin, view.ListView):
     login_url = '/login'
     template_name = 'posts.html'
     model = Post
@@ -55,7 +55,7 @@ class Posts(LoginRequiredMixin,view.ListView):
         data['users_post'] = Post.objects.filter(user=self.request.user)
         return data
 
-#
+
 # def posts(request):
 #     if request.user:
 #         return redirect('log in')
