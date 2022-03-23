@@ -6,22 +6,8 @@
     </div>
     <body>
     <div class="wrapper">
-        {#        <div class="sidebar">#}
-        {#            {% if user.is_authenticated %}#}
-        {#                <h1>Hello {{ user.appusername.username }}!</h1>#}
-        {#            {% endif %}#}
-        {##}
-        {#            {% for post in post %}#}
-        {#                <div class="sidebar-post">#}
-        {#                    <b>{{ post.title }}</b>#}
-        {#                    <p>{{ post.details }}</p>#}
-        {#                    <p>{{ post.category }}</p>#}
-        {#                </div>#}
-        {#            {% endfor %}#}
-        {#        </div>#}
-
         <div class="main-content">
-                <div class="button-form">
+            <div class="button-form">
                 <form action="{% url "post-make" %}" method="get">
                     <button class="redirect_button">
                         Make a Post+
@@ -31,17 +17,20 @@
                         <span></span>
                     </button>
                 </form>
-                </div>
-
-            <div class="all-posts">
-                {% for users_post in post %}
-                    <div class="main-post">
-                        <h1 class="post-title">{{ users_post.title }}</h1>
-                        <p class="post-description">{{ users_post.details }}</p>
-                        <p class="post-category"> Category: {{ users_post.category }}</p>
-                    </div>
-                {% endfor %}
             </div>
+            {% if post %}
+
+                <div class="all-posts">
+                    {% for users_post in post %}
+                        <div class="main-post">
+                            <h1 class="post-title">{{ users_post.title }}</h1>
+                            <p class="post-description">{{ users_post.details }}</p>
+                            <p class="post-category"> Category: {{ users_post.category }}</p>
+                            <p class="post-user">By: {{ users_post.user.appusername.username }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 

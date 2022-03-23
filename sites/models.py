@@ -13,10 +13,9 @@ POST_CHOICES = [
     ("Gaming", "Gaming"),
     ("Movies", "Movies"),
     ("Other", "Other")]
-#
-# print(UserModel.__name__)
 
 
+# AUTH USER MODEL
 class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
     email = models.EmailField(
         unique=True,
@@ -34,20 +33,18 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
 
     objects = AppUsersManager()
 
+
+# PROFILE MODEL
 class AppUsername(models.Model):
-    username = models.CharField(max_length=20)
-    age = models.CharField(max_length=2)
+    username = models.CharField(max_length=20, unique=True)
+    date = models.DateField()
 
     user = models.OneToOneField(AppUser, on_delete=models.CASCADE, primary_key=True)
 
 
-# class User(models.Model):
-#     password = models.CharField(max_length=29)
-
-
+# POSTS MODEL
 class Post(models.Model):
     title = models.CharField(max_length=100)
     details = models.TextField()
     category = models.CharField(max_length=100, choices=POST_CHOICES)
-
-    user = models.ForeignKey(AppUser,on_delete=models.CASCADE)
+    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)

@@ -1,18 +1,24 @@
 {% extends 'base/base.html' %}
 {% block base %}
     <body>
-    <div>
-        <h1 class="title">RedNot</h1>
-        <h1 class="percent">5%</h1>
-    </div>
+    <div class="wrapper">
+        <div class="main-content">
 
-    {% for p in users_post %}
-        <h1>
-        {{ p.details}}
-            <br>
-            {{ p.details }}
-{#        {{ p.category }}#}
-        </h1>
-    {% endfor %}
+                {% if users_post %}
+                <div class="all-posts">
+                    {% for post in users_post %}
+                        <div class="main-post">
+                            <h1 class="post-title">{{ post.title }}</h1>
+                            <p class="post-description">{{ post.details }}</p>
+                            <p class="post-category"> Category: {{ post.category }}</p>
+                            <p class="post-user">By: {{ post.user.appusername.username }}</p>
+                        <button class="edit_button" type="button" ><a href="{% url 'post-make' %}">Edit</a></button>
+                        <button type="button" >Delete</button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
     </body>
 {% endblock %}

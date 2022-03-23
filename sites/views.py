@@ -2,7 +2,6 @@ from django import views
 from django.contrib.auth import get_user_model, forms, views, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.forms import ModelForm
 from django.urls import reverse_lazy
@@ -40,7 +39,7 @@ class LogoutView(views.LogoutView):
 
 
 def home(request):
-    context = {'post': Post.objects.all()}
+    context = {'post': Post.objects.all().order_by('-id')}
 
     return render(request, 'home.html', context)
 
@@ -77,3 +76,4 @@ class MakePost(LoginRequiredMixin, view.CreateView):
 
 class AboutUs(view.TemplateView):
     template_name = 'about_us.html'
+

@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.forms import ModelForm, CharField
+from django.forms import ModelForm, CharField, DateField
 
 from website.sites.models import Post, AppUsername
 
@@ -9,8 +9,8 @@ UserModel = get_user_model()
 
 
 class UserRegistrationForm(UserCreationForm):
-    username = CharField(max_length=25)
-    age = CharField(max_length=2)
+    username = CharField(max_length=20)
+    date_of_birth = DateField()
 
     class Meta:
         model = UserModel
@@ -23,30 +23,24 @@ class UserRegistrationForm(UserCreationForm):
         for field_name in ['email', 'password1', 'password2', 'username']:
             self.fields[field_name].help_text = None
 
+    # save returns all the data when we finish a form
+    # in that way we take the user, which is the logged user
+    # then we create a profile with this information
     def save(self, commit=True):
         user = super().save(commit=commit)
-        profile = AppUsername(
+
+        new_user = AppUsername(
             username=self.cleaned_data['username'],
-            age=self.cleaned_data['age'],
+            date=self.cleaned_data['date_of_birth'],
             user=user
         )
+
         if commit:
-            profile.save()
+            new_user.save()
         return user
 
 
 class PostsForm(ModelForm):
-    # def __init__(self, user, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.user = user
-    #
-    # def save(self, commit=True):
-    #     post = super().save(commit=False)
-    #     post.user = self.user
-    #     if commit:
-    #         post.save()
-    #     return post
-
     class Meta:
         model = Post
         fields = ('title', 'details', 'category')
