@@ -47,5 +47,4 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     details = models.TextField()
     category = models.CharField(max_length=100, choices=POST_CHOICES)
-    age = models.IntegerField()
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
