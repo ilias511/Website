@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+{% block base %}
+
+    <fieldset class="user-post">
+        <form method="post" action="{% url 'edit post' post.id %}">
+            {% csrf_token %}
+            {{ form }}
+
+            <input type="submit" value="Save">
+        </form>
+    </fieldset>
+{% endblock %}

@@ -77,3 +77,11 @@ class MakePost(LoginRequiredMixin, view.CreateView):
 class AboutUs(view.TemplateView):
     template_name = 'about_us.html'
 
+
+class EditPosts(view.UpdateView):
+    model = Post
+    fields = ('title', 'details', 'category')
+    template_name = 'edit-post.html'
+
+    def get_success_url(self):
+        return reverse_lazy('home')

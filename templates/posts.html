@@ -12,11 +12,14 @@
                             <p class="post-description">{{ post.details }}</p>
                             <p class="post-category"> Category: {{ post.category }}</p>
                             <p class="post-user">By: {{ post.user.appusername.username }}</p>
-                        <button class="edit_button" type="button" ><a href="{% url 'post-make' %}">Edit</a></button>
-                        <button type="button" >Delete</button>
+                            <a class="button-post" href="{% url 'edit post' pk=post.pk %}">Edit</a>
+                            <button type="button" >Delete</button>
+
                         </div>
                     {% endfor %}
                 </div>
+                    {% else %}
+                    <h1>No current posts for the user</h1>
             {% endif %}
         </div>
     </div>

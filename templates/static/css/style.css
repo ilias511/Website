@@ -557,9 +557,36 @@ span {
     margin-left: auto;
 
 }
-.edit_button{
-    padding: 35px;
-    font-size: 20px;
-    margin-left: auto;
+a.button-post{
+    display: inline-block;
+    padding:1.5em 2.6em;
+    border:0.1em solid #000000;
+    margin:0 0.5em 0.2em 0;
+    cursor: pointer;
+    border-radius:12px;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#000000;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+    background-color: rgb(255, 255, 255);
+    text-align:center;
+    transition: all 0.15s;
 
 }
+a.button-post:hover{
+    text-shadow: 0 0 2em rgb(252, 252, 252);
+    color: rgba(3, 250, 16, 0.85);
+    background-color: #202C4D;
+    border-color: rgb(239, 239, 239);
+}
+
+@media all and (max-width: 30cm){
+    a.button-post{
+        display: block;
+        margin: 0.4em auto;
+    }
+
+}
+
