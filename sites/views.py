@@ -1,15 +1,11 @@
-from django import views
-from django.contrib.auth import get_user_model, forms, views, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views, login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
-from django.forms import ModelForm
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic as view
 
-from website.settings import LOGIN_REDIRECT_URL
 from website.sites.forms import UserRegistrationForm, PostsForm
-from website.sites.models import Post, AppUser
+from website.sites.models import Post
 
 
 class UserRegistrationView(view.CreateView):
