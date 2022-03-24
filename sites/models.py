@@ -1,10 +1,9 @@
 from django.conf import settings
 from django.contrib.auth.models import User
 
-from website.sites.managers import AppUsersManager
 from django.contrib.auth import models as auth_models, get_user_model
 from django.db import models
-from website.sites.managers import AppUsersManager
+from sites.managers import AppUsersManager
 
 POST_CHOICES = [
     ("Sport", "Sport"),

@@ -1,9 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from django.forms import ModelForm, CharField, DateField
+from django.forms import CharField, DateField, ModelForm
 
-from website.sites.models import Post, AppUsername
+from sites.models import AppUsername, Post
 
 UserModel = get_user_model()
 

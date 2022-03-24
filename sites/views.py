@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic as view
 
-from website.sites.forms import UserRegistrationForm, PostsForm
-from website.sites.models import Post
+from sites.forms import UserRegistrationForm, PostsForm
+from sites.models import Post
 
 
 class UserRegistrationView(view.CreateView):

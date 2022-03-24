@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.urls import path
 
-from website.sites.views import home, Posts, MakePost, AboutUs, UserRegistrationView, LogoutView, UserLoginView, \
+from sites.views import home, Posts, MakePost, AboutUs, UserRegistrationView, LogoutView, UserLoginView, \
     EditPosts
 
 urlpatterns = [
