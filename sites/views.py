@@ -85,3 +85,6 @@ class EditPosts(view.UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('home')
+
+class DeletePost(view.DeleteView):
+    pass
