@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views import generic as view
 
 from sites.forms import UserRegistrationForm, PostsForm
-from sites.models import Post
+from sites.models import Post,AppUser,AppUsername
 
 
 class UserRegistrationView(view.CreateView):
@@ -73,7 +73,13 @@ class MakePost(LoginRequiredMixin, view.CreateView):
 class AboutUs(view.TemplateView):
     template_name = 'about_us.html'
 
+class UserProfile(view.TemplateView):
+    template_name = 'profile.html'
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['users_info'] = Post.objects.filter(user=self.request.user).count()
+        return data
 class EditPosts(view.UpdateView):
     model = Post
     fields = ('title', 'details', 'category')

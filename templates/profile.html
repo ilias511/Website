@@ -1,10 +1,25 @@
 {% extends 'base/base.html' %}
 {% block base %}
-<body>
-<div>
-    <h1 class="title">RedNot</h1>
-    <h1 class="percent">5%</h1>
-</div>
+    <body>
+    <div class="about-us">
 
-</body>
+
+        <br>
+        <br>
+        <h3>
+            <aside>
+                <div class="name">Name: {{ request.user.appusername.username }}</div>
+                <div class="name">Email: {{ request.user }}</div>
+                <br>
+                <div class="socials">Date of birth: {{ request.user.appusername.date }}
+                </div>
+                <br>
+                <div class="name">Total posts: {{ users_info }}</div>
+
+            </aside>
+
+        </h3>
+    </div>
+
+    </body>
 {% endblock %}

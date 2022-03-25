@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import path
 
 from sites.views import home, Posts, MakePost, AboutUs, UserRegistrationView, LogoutView, UserLoginView, \
-    EditPosts
+    EditPosts, UserProfile
 
 urlpatterns = [
     path('', home, name='home'),
@@ -13,5 +13,6 @@ urlpatterns = [
     path('register/', UserRegistrationView.as_view(), name='register'),
     path('login/', UserLoginView.as_view(), name='log in'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('profile/',UserProfile.as_view(),name = 'profile'),
     path('edit/<int:pk>/', EditPosts.as_view(), name='edit post')
 ]
