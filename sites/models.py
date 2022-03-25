@@ -8,6 +8,9 @@ from sites.managers import AppUsersManager
 POST_CHOICES = [
     ("Sport", "Sport"),
     ("Politics", "Politics"),
+    ("Article","Article"),
+    ("Fun Fact","Fun Fact"),
+    ("Joke","Joke"),
     ("Crypto", "Crypto"),
     ("Gaming", "Gaming"),
     ("Movies", "Movies"),
@@ -40,10 +43,9 @@ class AppUsername(models.Model):
 
     user = models.OneToOneField(AppUser, on_delete=models.CASCADE, primary_key=True)
 
-
 # POSTS MODEL
 class Post(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=50,)
     details = models.TextField()
     category = models.CharField(max_length=100, choices=POST_CHOICES)
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)

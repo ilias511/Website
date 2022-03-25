@@ -17,10 +17,10 @@
         {% if user.is_authenticated %}
 
         <li class="account"><a class="log-out" href="{% url 'logout' %}"> Logout</a></li>
-        {% endif %}
+        {% else %}
         <li class="account"><a class="reg" href="{% url 'register' %}">Register</a></li>
         <li class="account"><a class="log" href="{% url 'log in' %}">Login</a></li>
-
+        {% endif %}
 
     </ul>
 

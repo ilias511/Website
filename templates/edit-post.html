@@ -1,12 +1,20 @@
 {% extends 'base/base.html' %}
 {% block base %}
+    <body>
+    <div>
+        <br>
+        <br>
+        <br>
+        <fieldset class="user-post">
+            <div>
+                <form method="post" action="{% url 'edit post' post.id %}">
+                    {% csrf_token %}
+                    {{ form }}
 
-    <fieldset class="user-post">
-        <form method="post" action="{% url 'edit post' post.id %}">
-            {% csrf_token %}
-            {{ form }}
-
-            <input type="submit" value="Save">
-        </form>
-    </fieldset>
+                    <input type="submit" value="Save">
+                </form>
+            </div>
+        </fieldset>
+    </div>
+    </body>
 {% endblock %}

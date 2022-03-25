@@ -301,6 +301,7 @@ input[type=submit]:hover {
     background: #ffdf0c;
     margin: auto;
     width: 700px;
+
     padding: 20px;
     font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
 }
