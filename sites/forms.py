@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import CharField, DateField, ModelForm
+from django.core.validators import MinLengthValidator, MinValueValidator
+from django.forms import CharField, DateField, ModelForm, IntegerField
 
 from sites.models import AppUsername, Post
 
@@ -8,8 +9,8 @@ UserModel = get_user_model()
 
 
 class UserRegistrationForm(UserCreationForm):
-    username = CharField(max_length=20)
-    date_of_birth = DateField()
+    username = CharField(max_length=20,validators=[MinLengthValidator(3)])
+    age = IntegerField(validators=[MinValueValidator(1)])
 
     class Meta:
         model = UserModel
@@ -30,7 +31,7 @@ class UserRegistrationForm(UserCreationForm):
 
         new_user = AppUsername(
             username=self.cleaned_data['username'],
-            date=self.cleaned_data['date_of_birth'],
+            age=self.cleaned_data['age'],
             user=user
         )
 
