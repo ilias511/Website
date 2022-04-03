@@ -80,6 +80,7 @@ class UserProfile(view.TemplateView):
         data = super().get_context_data(**kwargs)
         data['users_info'] = Post.objects.filter(user=self.request.user).count()
         return data
+
 class EditPosts(view.UpdateView):
     model = Post
     fields = ('title', 'details', 'category')
