@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views import generic as view
 
 from sites.forms import UserRegistrationForm, PostsForm, ImageForm
-from sites.models import Post,AppUser,AppUsername
+from sites.models import Post, AppUser, AppUsername, Images
 
 
 class UserRegistrationView(view.CreateView):
@@ -35,9 +35,19 @@ class LogoutView(views.LogoutView):
 
 
 def home(request):
-    context = {'post': Post.objects.all().order_by('-id')}
+    context = {'post': Post.objects.all().order_by('-id'), 'images': Images.objects.all()}
 
     return render(request, 'home.html', context)
+
+
+class AllImages(view.ListView):
+    template_name = 'images.html'
+    model = Images
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['all_images'] = Images.objects.all()
+        return data
 
 
 class Posts(LoginRequiredMixin, view.ListView):
@@ -69,7 +79,8 @@ class MakePost(LoginRequiredMixin, view.CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class PostImage(LoginRequiredMixin,view.CreateView):
+
+class PostImage(LoginRequiredMixin, view.CreateView):
     login_url = '/login'
     template_name = 'post-image.html'
     form_class = ImageForm
@@ -83,6 +94,7 @@ class PostImage(LoginRequiredMixin,view.CreateView):
 class AboutUs(view.TemplateView):
     template_name = 'about_us.html'
 
+
 class UserProfile(view.TemplateView):
     template_name = 'profile.html'
 
@@ -91,6 +103,7 @@ class UserProfile(view.TemplateView):
         data['users_info'] = Post.objects.filter(user=self.request.user).count()
         return data
 
+
 class EditPosts(view.UpdateView):
     model = Post
     fields = ('title', 'details', 'category')
@@ -98,6 +111,7 @@ class EditPosts(view.UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('home')
+
 
 class DeletePost(view.DeleteView):
     pass

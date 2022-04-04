@@ -4,14 +4,14 @@ from django.contrib.auth.models import User
 from django.contrib.auth import models as auth_models, get_user_model
 from django.db import models
 from sites.managers import AppUsersManager
-from django.core.validators import MinLengthValidator,MinValueValidator
+from django.core.validators import MinLengthValidator, MinValueValidator
 
 POST_CHOICES = [
     ("Sport", "Sport"),
     ("Politics", "Politics"),
     ("Article", "Article"),
     ("Fun Fact", "Fun Fact"),
-    ("International News","International News"),
+    ("International News", "International News"),
     ("Joke", "Joke"),
     ("Crypto", "Crypto"),
     ("Gaming", "Gaming"),
@@ -52,7 +52,8 @@ class Post(models.Model):
     category = models.CharField(max_length=100, choices=POST_CHOICES)
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
 
+
 class Images(models.Model):
     title = models.CharField(max_length=20)
-    image = models.ImageField()
-    user = models.ForeignKey(AppUser,on_delete=models.CASCADE)
+    image = models.URLField()
+    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)

@@ -330,8 +330,9 @@ input[type=submit]:hover {
 
 .main-content {
     margin: 0;
+
     padding: 3em;
-    flex: 1;
+    flex: 10;
 }
 
 
@@ -341,6 +342,8 @@ input[type=submit]:hover {
 
 .all-posts {
     margin-top: 3em;
+    flex: 1;
+
 }
 
 .main-post {
@@ -358,7 +361,16 @@ input[type=submit]:hover {
     margin: 1em 2em;
     text-decoration: underline;
 }
+.main-image{
+    border: 10px solid rgba(0, 0, 0, 0.85);
+    box-sizing: border-box;
+    background-color: #fbe93e;
+    margin: 2em;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
+}
 
 .user-reg {
     border-radius: 5px;
@@ -532,6 +544,38 @@ span {
     background-color: #fbe93e;
 }
 
+
+.image-content-main{
+    position: center;
+    text-align: center;
+    align-items: center;
+}
+.image-content {
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    position: center;
+    height: 50%;
+    width: 50%;
+    margin-bottom: 4em;
+    align-content: center;
+
+}
+
+.figure {
+    text-align: center;
+    width: 300px;
+
+}
+
+.container {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    display: flex;
+    align-content: center;
+}
+
 .post-title {
     padding: 25px;
     color: #000000;
@@ -605,23 +649,25 @@ a.button-post:hover {
     }
 
 }
-.id_image{
+
+.id_image {
     display: block;
-  position: relative;
-  width: 200px;
-  height: 50px;
-  border-radius: 25px;
-  background: linear-gradient(40deg, #ff6ec4, #7873f5);
-  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform .2s ease-out;
+    position: relative;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    background: linear-gradient(40deg, #ff6ec4, #7873f5);
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform .2s ease-out;
 }
-input[type=file]{
-    width: 50%;
-    color: #020202;
-}
+
+/*input[type=file]{*/
+/*    width: 50%;*/
+/*    color: #020202;*/
+/*}*/
