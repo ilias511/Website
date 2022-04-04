@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic as view
 
-from sites.forms import UserRegistrationForm, PostsForm
+from sites.forms import UserRegistrationForm, PostsForm, ImageForm
 from sites.models import Post,AppUser,AppUsername
 
 
@@ -63,6 +63,16 @@ class MakePost(LoginRequiredMixin, view.CreateView):
     login_url = '/login'
     template_name = 'make-post.html'
     form_class = PostsForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class PostImage(LoginRequiredMixin,view.CreateView):
+    login_url = '/login'
+    template_name = 'post-image.html'
+    form_class = ImageForm
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):

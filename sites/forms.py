@@ -3,13 +3,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import MinLengthValidator, MinValueValidator
 from django.forms import CharField, DateField, ModelForm, IntegerField
 
-from sites.models import AppUsername, Post
+from sites.models import AppUsername, Post, Images
 
 UserModel = get_user_model()
 
 
 class UserRegistrationForm(UserCreationForm):
-    username = CharField(max_length=20,validators=[MinLengthValidator(3)])
+    username = CharField(max_length=20, validators=[MinLengthValidator(3)])
     age = IntegerField(validators=[MinValueValidator(1)])
 
     class Meta:
@@ -44,3 +44,9 @@ class PostsForm(ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'details', 'category')
+
+
+class ImageForm(ModelForm):
+    class Meta:
+        model = Images
+        fields = ('title', 'image')

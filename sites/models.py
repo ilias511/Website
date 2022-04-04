@@ -11,6 +11,7 @@ POST_CHOICES = [
     ("Politics", "Politics"),
     ("Article", "Article"),
     ("Fun Fact", "Fun Fact"),
+    ("International News","International News"),
     ("Joke", "Joke"),
     ("Crypto", "Crypto"),
     ("Gaming", "Gaming"),
@@ -46,7 +47,12 @@ class AppUsername(models.Model):
 
 # POSTS MODEL
 class Post(models.Model):
-    title = models.CharField(max_length=50, )
+    title = models.CharField(max_length=20, )
     details = models.TextField()
     category = models.CharField(max_length=100, choices=POST_CHOICES)
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+
+class Images(models.Model):
+    title = models.CharField(max_length=20)
+    image = models.ImageField()
+    user = models.ForeignKey(AppUser,on_delete=models.CASCADE)
