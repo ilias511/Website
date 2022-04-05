@@ -352,7 +352,9 @@ input[type=submit]:hover {
     background-color: #fbe93e;
     margin: 2em;
 }
+.justify-images-bottom{
 
+}
 .main-post .post-content {
     padding: 2em;
 }
@@ -553,27 +555,23 @@ span {
 .image-content {
     /*margin-left: auto;*/
     /*margin-right: auto;*/
+    /*position: center;*/
     position: center;
-    height: 50%;
-    width: 50%;
+    height: 500px;
+    width: 600px;
     margin-bottom: 4em;
     align-content: center;
 
 }
 
-.figure {
-    text-align: center;
-    width: 300px;
-
-}
 
 .container {
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    display: flex;
-    align-content: center;
+    /*justify-content: center;*/
+    /*!*align-items: center;*!*/
+    /*flex-direction: column;*/
+    /*width: auto;*/
+    /*display: flex;*/
+    /*align-content: center;*/
 }
 
 .post-title {
@@ -615,7 +613,14 @@ span {
     margin-left: auto;
 
 }
+.image-user{
+    margin-right: 1px;
+    padding: 10px;
+    font-size: 30px;
+    text-align: right;
+    margin-left: auto;
 
+}
 a.button-post {
     display: inline-block;
     padding: 1.5em 2.6em;
@@ -650,22 +655,22 @@ a.button-post:hover {
 
 }
 
-.id_image {
-    display: block;
-    position: relative;
-    width: 200px;
-    height: 50px;
-    border-radius: 25px;
-    background: linear-gradient(40deg, #ff6ec4, #7873f5);
-    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform .2s ease-out;
-}
+/*.id_image {*/
+/*    display: block;*/
+/*    position: relative;*/
+/*    width: 200px;*/
+/*    height: 50px;*/
+/*    border-radius: 25px;*/
+/*    background: linear-gradient(40deg, #ff6ec4, #7873f5);*/
+/*    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    color: #fff;*/
+/*    font-weight: bold;*/
+/*    cursor: pointer;*/
+/*    transition: transform .2s ease-out;*/
+/*}*/
 
 /*input[type=file]{*/
 /*    width: 50%;*/

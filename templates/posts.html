@@ -4,7 +4,7 @@
     <div class="wrapper">
         <div class="main-content">
 
-                {% if users_post %}
+            {% if users_post or users_images %}
                 <div class="all-posts">
                     {% for post in users_post %}
                         <div class="main-post">
@@ -13,13 +13,28 @@
                             <p class="post-category"> Category: {{ post.category }}</p>
                             <p class="post-user">By: {{ post.user.appusername.username }}</p>
                             <a class="button-post" href="{% url 'edit post' pk=post.pk %}">Edit</a>
-                            <button type="button" >Delete</button>
+                            <a class="button-delete" href="{% url 'delete post' pk=post.pk %}">Delete</a>
 
                         </div>
                     {% endfor %}
+                    {% for image in users_images %}
+                        <div class="main-post">
+
+                            <h1 class="post-title"> {{ image.title }}</h1>
+                            {#                            <div class="container">#}
+
+                            <img class="image-content" src='{{ image.image }}'>
+
+                            <p class="image-user">By: {{ image.user.appusername.username }}</p>
+                            <a class="button-post"href="">Delete</a>
+                        </div>
+
+                    {% endfor %}
+
+
                 </div>
-                    {% else %}
-                    <h1>No current posts for the user</h1>
+            {% else %}
+                <h1>No current posts for the user</h1>
             {% endif %}
         </div>
     </div>

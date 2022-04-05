@@ -58,6 +58,7 @@ class Posts(LoginRequiredMixin, view.ListView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         data['users_post'] = Post.objects.filter(user=self.request.user)
+        data['users_images'] = Images.objects.filter(user=self.request.user)
         return data
 
 
@@ -101,10 +102,12 @@ class UserProfile(view.TemplateView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         data['users_info'] = Post.objects.filter(user=self.request.user).count()
+        data['users_images'] = Images.objects.filter(user = self.request.user).count()
+        data['total_count'] = data['users_images']+data['users_info']
         return data
 
 
-class EditPosts(view.UpdateView):
+class EditPostsText(view.UpdateView):
     model = Post
     fields = ('title', 'details', 'category')
     template_name = 'edit-post.html'
@@ -113,5 +116,7 @@ class EditPosts(view.UpdateView):
         return reverse_lazy('home')
 
 
-class DeletePost(view.DeleteView):
-    pass
+class DeletePostText(view.DeleteView):
+    model = Post
+    success_url = reverse_lazy('home')
+    template_name = 'delete-posts.html'

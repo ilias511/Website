@@ -7,28 +7,29 @@
     <body>
     <div class="wrapper">
         <div class="main-content">
-        </div>
 
 
-                <div class="all-posts">
 
-                    {% for image in all_images %}
-                        <div class="main-post">
+        <div class="all-posts">
 
-                            <h1 class="post-title"> {{ image.title }}</h1>
-                            <div class="container">
+            {% for image in all_images %}
+                <div class="main-post">
 
-                            <img class="image-content" src='{{ image.image }}'>
-                            </div>
-                        </div>
+                    <h1 class="post-title"> {{ image.title }}</h1>
+                    {#                            <div class="container">#}
 
-                    {% endfor %}
+                    <img class="image-content" src='{{ image.image }}'>
 
+                    <p class="image-user">By: {{ image.user.appusername.username }}</p>
+                    {#                            <a class="button-post" href="{% url 'edit post' pk=post.pk %}">Edit</a>#}
+
+                    {#                            </div>#}
                 </div>
 
+            {% endfor %}
+
         </div>
 
-
-
+    </div>
     </body>
 {% endblock %}
