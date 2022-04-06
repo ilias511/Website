@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% block base %}
+    <body>
+    <div>
+        <br>
+        <br>
+        <br>
+        <fieldset class="user-post">
+            <div>
+                <form method="post" action="{% url 'delete image' images.id %}">
+                    <h1>Are you sure you want to delete this post?</h1>
+                    {% csrf_token %}
+                    {{ form }}
+
+                    <input type="submit" value="Delete">
+                </form>
+            </div>
+        </fieldset>
+    </div>
+    </body>
+{% endblock %}
