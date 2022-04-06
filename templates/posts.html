@@ -6,8 +6,9 @@
 
 
             {% if users_post or users_images %}
+                <h1 class="post-title">TEXTS</h1>
                 <div class="all-posts">
-                    <h1 class="post-title">TEXTS</h1>
+
                     {% for post in users_post %}
                         <div class="main-post">
                             <h1 class="post-title">{{ post.title }}</h1>
@@ -23,11 +24,12 @@
                 </div>
                 <div class="wrapper">
                 <div class="main-content">
-                <div class="all-posts">
+
                 <h1 class="post-title">IMAGES</h1>
 
                     {% for image in users_images %}
-                        <div class="main-post">
+                        <div class="all-posts">
+{#                        <div class="main-post">#}
 
                             <h1 class="post-title"> {{ image.title }}</h1>
                             {#                            <div class="container">#}
@@ -48,6 +50,6 @@
             </div>
             </div>
         </div>
-    </div>
+{#    </div>#}
     </body>
 {% endblock %}

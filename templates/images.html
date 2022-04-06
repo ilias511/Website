@@ -9,11 +9,12 @@
         <div class="main-content">
 
 
-
-        <div class="all-posts">
-
+            {#        {% if all_images %}#}
             {% for image in all_images %}
-                <div class="main-post">
+                <div class="all-posts">
+
+
+                    {#                <div class="main-image">#}
 
                     <h1 class="post-title"> {{ image.title }}</h1>
                     {#                            <div class="container">#}
@@ -29,7 +30,8 @@
             {% endfor %}
 
         </div>
-
+        {#    {% endif %}#}
     </div>
+    {#    </div>#}
     </body>
 {% endblock %}

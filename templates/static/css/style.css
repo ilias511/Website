@@ -543,7 +543,7 @@ span {
     border: 10px solid rgba(0, 0, 0, 0.85);
     border-radius: inherit;
     box-sizing: border-box;
-    background-color: #fbe93e;
+    background-color: rgb(47, 49, 54);
 }
 
 
@@ -552,13 +552,14 @@ span {
     text-align: center;
     align-items: center;
 }
+
 .image-content {
     /*margin-left: auto;*/
     /*margin-right: auto;*/
     /*position: center;*/
     position: center;
-    height: 500px;
-    width: 600px;
+    height: 450px;
+    width: 800px;
     margin-bottom: 4em;
     align-content: center;
 
