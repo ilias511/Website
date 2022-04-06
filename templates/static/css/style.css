@@ -352,9 +352,11 @@ input[type=submit]:hover {
     background-color: #fbe93e;
     margin: 2em;
 }
-.justify-images-bottom{
+
+.justify-images-bottom {
 
 }
+
 .main-post .post-content {
     padding: 2em;
 }
@@ -363,7 +365,8 @@ input[type=submit]:hover {
     margin: 1em 2em;
     text-decoration: underline;
 }
-.main-image{
+
+.main-image {
     border: 10px solid rgba(0, 0, 0, 0.85);
     box-sizing: border-box;
     background-color: #fbe93e;
@@ -547,7 +550,7 @@ span {
 }
 
 
-.image-content-main{
+.image-content-main {
     position: center;
     text-align: center;
     align-items: center;
@@ -614,7 +617,8 @@ span {
     margin-left: auto;
 
 }
-.image-user{
+
+.image-user {
     margin-right: 1px;
     padding: 10px;
     font-size: 30px;
@@ -622,30 +626,27 @@ span {
     margin-left: auto;
 
 }
+
 a.button-post {
+    background-color: #2b2b2b;
     display: inline-block;
     padding: 1.5em 2.6em;
     border: 0.1em solid #000000;
     margin: 0 0.5em 0.2em 0;
-    cursor: pointer;
-    border-radius: 12px;
+    border-radius: 1.42em;
     box-sizing: border-box;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    color: #000000;
-    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-    background-color: rgb(255, 255, 255);
+    color: #FFFFFF;
     text-align: center;
-    transition: all 0.15s;
-
+    transition: all 0.7s;
 }
 
 a.button-post:hover {
-    text-shadow: 0 0 2em rgb(252, 252, 252);
-    color: rgba(3, 250, 16, 0.85);
-    background-color: #202C4D;
-    border-color: rgb(239, 239, 239);
+    color: #000000;
+    background-color: #FFFFFF;
+
 }
 
 @media all and (max-width: 30cm) {
@@ -677,3 +678,33 @@ a.button-post:hover {
 /*    width: 50%;*/
 /*    color: #020202;*/
 /*}*/
+
+.button-delete {
+
+    background-color: #2b2b2b;
+    display: inline-block;
+    padding: 1.5em 2.6em;
+    border: 0.1em solid #000000;
+    margin: 0 0.5em 0.2em 0;
+    border-radius: 1.42em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.7s;
+}
+
+.button-delete:hover {
+    color: #000000;
+    background-color: #FFFFFF;
+
+}
+
+@media all and (max-width: 30em) {
+    .button-delete {
+        display: block;
+        margin: 0.4em auto;
+    }
+}

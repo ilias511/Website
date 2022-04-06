@@ -47,13 +47,13 @@ class AppUsername(models.Model):
 
 # POSTS MODEL
 class Post(models.Model):
-    title = models.CharField(max_length=20, )
+    title = models.CharField(max_length=50, )
     details = models.TextField()
     category = models.CharField(max_length=100, choices=POST_CHOICES)
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
 
 
 class Images(models.Model):
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=50)
     image = models.URLField()
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)

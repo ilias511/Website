@@ -18,7 +18,7 @@
                     </button>
                 </form>
             </div>
-        </div>
+
 {#        put a div to display images in the center#}
             {% if post %}
 
@@ -31,13 +31,12 @@
                             <p class="post-user">By: {{ users_post.user.appusername.username }}</p>
                         </div>
                     {% endfor %}
-
-                    
                 </div>
-            {% endif %}
+
         </div>
+
     </div>
 
-
+{% endif %}
     </body>
 {% endblock %}
