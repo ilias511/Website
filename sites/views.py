@@ -96,7 +96,8 @@ class AboutUs(view.TemplateView):
     template_name = 'about_us.html'
 
 
-class UserProfile(view.TemplateView):
+class UserProfile(LoginRequiredMixin,view.TemplateView):
+    login_url = '/login'
     template_name = 'profile.html'
 
     def get_context_data(self, **kwargs):
