@@ -14,7 +14,7 @@
                             <h1 class="post-title">{{ post.title }}</h1>
                             <p class="post-description">{{ post.details }}</p>
                             <p class="post-category"> Category: {{ post.category }}</p>
-                            <p class="post-user">By: {{ post.user.appusername.username }}</p>
+{#                            <p class="post-user">By: {{ post.user.appusername.username }}</p>#}
                             <a class="button-post" href="{% url 'edit post' pk=post.pk %}">Edit</a>
                             <a class="button-delete" href="{% url 'delete post' pk=post.pk %}">Delete</a>
 
@@ -36,7 +36,7 @@
 
                             <img class="image-content" src='{{ image.image }}'>
 
-                            <p class="image-user">By: {{ image.user.appusername.username }}</p>
+{#                            <p class="image-user">By: {{ image.user.appusername.username }}</p>#}
                             <a class="button-delete" href="{% url 'delete image' pk=image.id %}">Delete</a>
                         </div>
 

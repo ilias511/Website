@@ -18,6 +18,15 @@ POST_CHOICES = [
     ("Movies", "Movies"),
     ("Other", "Other")]
 
+USERNAME_MAX_LENGTH = 30
+USERNAME_MIN_LENGTH = 3
+AGE_MIN_VALUE = 1
+
+POST_TITLE_MAX_LENGTH = 50
+POST_CATEGORY_MAX_LENGTH = 100
+
+IMAGE_TITLE_MAX_LENGTH = 50
+
 
 # AUTH USER MODEL
 class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
@@ -40,20 +49,21 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
 
 # PROFILE MODEL
 class AppUsername(models.Model):
-    username = models.CharField(max_length=20, unique=True, validators=[MinLengthValidator(3), ])
-    age = models.IntegerField(validators=[MinValueValidator(1)])
+    username = models.CharField(max_length=USERNAME_MAX_LENGTH, unique=True,
+                                validators=[MinLengthValidator(USERNAME_MIN_LENGTH), ])
+    age = models.IntegerField(validators=[MinValueValidator(AGE_MIN_VALUE)])
     user = models.OneToOneField(AppUser, on_delete=models.CASCADE, primary_key=True)
 
 
 # POSTS MODEL
 class Post(models.Model):
-    title = models.CharField(max_length=50, )
+    title = models.CharField(max_length=POST_TITLE_MAX_LENGTH, )
     details = models.TextField()
-    category = models.CharField(max_length=100, choices=POST_CHOICES)
+    category = models.CharField(max_length=POST_CATEGORY_MAX_LENGTH, choices=POST_CHOICES)
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
 
 
 class Images(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=IMAGE_TITLE_MAX_LENGTH)
     image = models.URLField()
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
