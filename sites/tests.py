@@ -82,7 +82,42 @@ class TestProfileMakePostView(django_test.TestCase):
             age=16,
             user=user
         )
-        client.login(email='ilias.task@gmail.com',password = 'iliasgrbg15')
+        client.login(email='ilias.task@gmail.com', password='iliasgrbg15')
 
         response = client.get(reverse('post-make'), follow=True)
         self.assertTemplateUsed(response, 'make-post.html')
+        self.assertEqual(200, response.status_code)
+
+
+class TestUserProfileView(django_test.TestCase):
+
+    def test_when_user_is_logged(self):
+        client = django_test.Client()
+        user = AppUser.objects.create(
+            email='ilias.task@gmail.coma',
+            is_staff=False,
+            is_superuser=False
+
+        )
+        user.set_password('iliasgrbg15')
+        user.save()
+        app_user = AppUsername.objects.create(
+            username='YoungTask',
+            age=16,
+            user=user
+        )
+        client.login(email='ilias.task@gmail.coma', password='iliasgrbg15')
+
+        p = Post.objects.create(
+            title='random',
+            details='random 2 test',
+            category='Crypto',
+            user=user
+
+        )
+        p.save()
+
+        response = client.get(reverse('profile'),follow=True)
+        posts = response.context['users_info']
+        self.assertTemplateUsed(response,'profile.html')
+        self.assertEqual(1,posts)

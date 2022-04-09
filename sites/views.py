@@ -35,7 +35,7 @@ class LogoutView(views.LogoutView):
 
 
 def home(request):
-    context = {'post': Post.objects.all().order_by('-id'), 'images': Images.objects.all()}
+    context = {'post': Post.objects.all().order_by('-id'),}
 
     return render(request, 'home.html', context)
 

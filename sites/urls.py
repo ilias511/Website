@@ -7,7 +7,6 @@ from sites.views import home, Posts, MakePost, AboutUs, UserRegistrationView, Lo
 
 urlpatterns = [
     path('', home, name='home'),
-    # path('posts/',Home.as_view(),name = 'all posts'),
     path('images/', AllImages.as_view(), name='all images'),
     path('post/', Posts.as_view(), name='posting'),
     path('make-post/', MakePost.as_view(), name='post-make'),
