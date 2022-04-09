@@ -1,19 +1,8 @@
 from django import test as django_test
+from django.contrib.auth import login
 from django.urls import reverse
 
 from sites.models import AppUsername, Post, AppUser
-
-
-#
-# class AppUsernameTest(django_test.TestCase):
-#
-#     def test_true(self):
-#         self.assertTrue(True)
-#
-#     # def test_user_create_when_everything_is_valid(self):
-#     #     user = AppUsername(username='Youngtask' ,age=14)
-#     #     user.save()
-#     #     self.assertIsNotNone(user.pk)
 
 
 class TestHomeView(django_test.TestCase):
@@ -64,16 +53,36 @@ class TestHomeView(django_test.TestCase):
         response = client.get(reverse('home'))
 
         posts = response.context['post']
-        self.assertEqual(posts.count(),0)
+        self.assertEqual(posts.count(), 0)
 
 
-class TestProfileView(django_test.TestCase):
+class TestProfileMakePostView(django_test.TestCase):
 
-    def test_profile_page_without_profile_created(self):
+    def test_post_page_without_profile_created(self):
         client = django_test.Client()
 
-        response = client.get(reverse('post-make'),follow=True)
+        response = client.get(reverse('post-make'), follow=True)
 
-        self.assertTemplateUsed(response,'login.html')
+        self.assertTemplateUsed(response, 'login.html')
 
-        self.assertEqual(200,response.status_code)
+        self.assertEqual(200, response.status_code)
+
+    def test_post_page_with_user(self):
+        client = django_test.Client()
+        user = AppUser.objects.create(
+            email='ilias.task@gmail.com',
+            is_staff=False,
+            is_superuser=False
+
+        )
+        user.set_password('iliasgrbg15')
+        user.save()
+        app_user = AppUsername.objects.create(
+            username='YoungTask',
+            age=16,
+            user=user
+        )
+        client.login(email='ilias.task@gmail.com',password = 'iliasgrbg15')
+
+        response = client.get(reverse('post-make'), follow=True)
+        self.assertTemplateUsed(response, 'make-post.html')
