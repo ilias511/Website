@@ -35,7 +35,7 @@ class LogoutView(views.LogoutView):
 
 
 def home(request):
-    context = {'post': Post.objects.all().order_by('-id'),}
+    context = {'post': Post.objects.all().order_by('-id'), }
 
     return render(request, 'home.html', context)
 
@@ -60,14 +60,6 @@ class Posts(LoginRequiredMixin, view.ListView):
         data['users_post'] = Post.objects.filter(user=self.request.user)
         data['users_images'] = Images.objects.filter(user=self.request.user)
         return data
-
-
-# def posts(request):
-#     if request.user:
-#         return redirect('log in')
-#     user_posts = Post.objects.filter(user=request.user)
-#     context = {'post': user_posts}
-#     return render(request, 'posts.html', context)
 
 
 class MakePost(LoginRequiredMixin, view.CreateView):
@@ -96,7 +88,7 @@ class AboutUs(view.TemplateView):
     template_name = 'about_us.html'
 
 
-class UserProfile(LoginRequiredMixin,view.TemplateView):
+class UserProfile(LoginRequiredMixin, view.TemplateView):
     login_url = '/login'
     template_name = 'profile.html'
 
@@ -121,6 +113,7 @@ class DeletePostText(view.DeleteView):
     model = Post
     success_url = reverse_lazy('home')
     template_name = 'delete-posts.html'
+
 
 class DeletePostImage(view.DeleteView):
     model = Images

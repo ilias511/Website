@@ -121,3 +121,6 @@ class TestUserProfileView(django_test.TestCase):
         posts = response.context['users_info']
         self.assertTemplateUsed(response,'profile.html')
         self.assertEqual(1,posts)
+
+class TestUserPostsAndImages(django_test.TestCase):
+    pass
