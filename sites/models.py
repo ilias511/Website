@@ -1,6 +1,7 @@
+import math
+
 from django.conf import settings
 from django.contrib.auth.models import User
-
 from django.contrib.auth import models as auth_models, get_user_model
 from django.db import models
 from sites.managers import AppUsersManager
@@ -26,6 +27,8 @@ POST_TITLE_MAX_LENGTH = 50
 POST_CATEGORY_MAX_LENGTH = 100
 
 IMAGE_TITLE_MAX_LENGTH = 50
+
+
 
 
 # AUTH USER MODEL
@@ -67,3 +70,7 @@ class Images(models.Model):
     title = models.CharField(max_length=IMAGE_TITLE_MAX_LENGTH)
     image = models.URLField()
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+
+#admin
+class AdminUser(models.Model):
+    username = models.CharField(max_length=USERNAME_MAX_LENGTH)

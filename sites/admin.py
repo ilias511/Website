@@ -3,9 +3,13 @@ from django.contrib import admin
 # Register your models here.]
 
 
-from sites.models import Post
+from sites.models import AppUser
+from django.contrib.auth.admin import UserAdmin
 
 
-@admin.register(Post)
+@admin.register(AppUser)
 class TestAdmin2(admin.ModelAdmin):
-    pass
+    list_display = ('email',)
+
+
+
