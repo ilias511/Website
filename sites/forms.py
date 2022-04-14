@@ -1,7 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator, MinValueValidator
-from django.forms import CharField, DateField, ModelForm, IntegerField
+from django.forms import CharField, DateField, ModelForm, IntegerField, Form
 
 from sites.models import AppUsername, Post, Images
 
@@ -50,3 +51,9 @@ class ImageForm(ModelForm):
     class Meta:
         model = Images
         fields = ('title', 'image')
+
+
+class RemoveUser(Form):
+    class Meta:
+        model = User
+        fields = ('username',)

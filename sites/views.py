@@ -1,10 +1,11 @@
-from django.contrib.auth import views, login
+from django.contrib.auth import views, login, get_user_model, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as view
 
-from sites.forms import UserRegistrationForm, PostsForm, ImageForm
+from sites.forms import UserRegistrationForm, PostsForm, ImageForm, RemoveUser
 from sites.models import Post, AppUser, AppUsername, Images
 
 
@@ -119,3 +120,23 @@ class DeletePostImage(view.DeleteView):
     model = Images
     success_url = reverse_lazy('home')
     template_name = 'delete-image.html'
+#
+class Delete_Profile(view.DeleteView):
+    model = AppUser
+    success_url = reverse_lazy('home')
+
+
+def remove_user(request,pk):
+    if request.method == 'POST':
+        form = RemoveUser(request.POST)
+
+        if form.is_valid():
+            rem = AppUser.objects.get(pk=pk)
+            if rem is not None:
+                rem.delete()
+                return redirect('home')
+
+    else:
+        form = RemoveUser()
+    context = {'form': form}
+    return render(request, 'delete_user.html', context)

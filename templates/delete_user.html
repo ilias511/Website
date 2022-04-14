@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+{% block base %}
+
+<form method="post" action="{% url 'delete user' user.pk %}">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">delete account</button>
+</form>
+
+{% endblock %}
