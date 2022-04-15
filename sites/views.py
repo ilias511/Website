@@ -47,7 +47,7 @@ class AllImages(view.ListView):
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
-        data['all_images'] = Images.objects.all()
+        data['all_images'] = Images.objects.all().order_by('-id')
         return data
 
 
@@ -78,7 +78,7 @@ class PostImage(LoginRequiredMixin, view.CreateView):
     login_url = '/login'
     template_name = 'post-image.html'
     form_class = ImageForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('all images')
 
     def form_valid(self, form):
         form.instance.user = self.request.user

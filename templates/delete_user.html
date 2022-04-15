@@ -1,10 +1,20 @@
 {% extends 'base/base.html' %}
 {% block base %}
+<div>
+        <br>
+        <br>
+        <br>
+        <fieldset class="user-post">
+            <div>
 
 <form method="post" action="{% url 'delete user' user.pk %}">
+    <h1>Are you sure you want to delete your profile?</h1>
+    <h2>(All of your posts will be deleted)</h2>
     {% csrf_token %}
     {{ form }}
-    <button type="submit">delete account</button>
+    <input type="submit" value="Delete account">
 </form>
-
+            </div>
+        </fieldset>
+</div>
 {% endblock %}
